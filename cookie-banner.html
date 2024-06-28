@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cookie Banner</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/8a55a6124d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="cookie-banner-container translateY">
+      <div class="cookie-banner-info">
+        <h2 class="cookie-banner-heading">
+          <i class="fa-solid fa-cookie-bite"></i>We use cookies!
+        </h2>
+        <p>
+          This website uses cookies to ensure you get the best experience on our
+          website. We may store and/or access information on a device and
+          process personal data, such as your IP address and browsing data, for
+          personalised advertising and content, advertising and content
+          measurement, audience research and services development.
+        </p>
+        <p>
+          To learn more please see our
+          <a href="#" class="privacy-policy-link">Privacy Policy</a>
+        </p>
+      </div>
+      <div class="cookie-banner-btns">
+        <button onclick="acceptAllCookies()" class="cookie-accept-btn">
+          Accept All Cookies
+        </button>
+        <button onclick="acceptNecessaryCookies()" class="cookie-necessary-btn">
+          Accept Necessary Cookies
+        </button>
+        <button onclick="removeCookies()" class="cookie-dismiss-btn">
+          Reject
+        </button>
+      </div>
+    </div>
+    <script>
+      const cookieContainer = document.querySelector(
+        ".cookie-banner-container"
+      );
+
+
+      window.onload = () => {
+        cookieContainer.classList.remove('translateY');
+      }
+
+      function getCookies(cName) {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie);
+        const splittedArr = cDecoded.split(";");
+        let value;
+        splittedArr.forEach((val) => {
+          if (val.indexOf(name) === 0) value = val.substring(name.length);
+        });
+
+        return value;
+      }
+
+      function loadAdScripts() {
+        const script = document.createElement("script");
+        script.src = "cookie-scripts/advertising-cookie.js";
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
+      function acceptAllCookies() {
+        const cookieName = "exCookie";
+
+        if (!getCookies(cookieName)) {
+          cookieContainer.classList.remove("hidden");
+        }
+        document.cookie =
+          cookieName +
+          "=true; expires=" +
+          new Date(
+            new Date().getTime() + 20 * 24 * 60 * 60 * 1000
+          ).toUTCString();
+
+        cookieContainer.style.display = "none";
+        loadAdScripts();
+      }
+
+      function removeCookies() {
+        const cookieName = "tracking-cookie-1";
+        document.cookie =
+          cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        cookieContainer.style.display = "none";
+      }
+
+      function acceptNecessaryCookies() {
+        cookieContainer.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
