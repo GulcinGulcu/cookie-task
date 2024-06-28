@@ -68,9 +68,13 @@
       function acceptAllCookies() {
         const cookieName = "exCookie";
 
+        /*
+        this is the logic which is useful for future usage of the banner, it prevents the banner from showing up again and again when navigating the page. 
+
         if (!getCookies(cookieName)) {
           cookieContainer.classList.remove("hidden");
-        }
+        } 
+        */
         document.cookie =
           cookieName +
           "=true; expires=" +
@@ -84,9 +88,9 @@
 
       function removeCookies() {
         const cookieName = "tracking-cookie-2";
-        if(getCookies(cookieName)) {
+        if (getCookies(cookieName)) {
           document.cookie =
-          cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         }
         cookieContainer.style.display = "none";
       }
