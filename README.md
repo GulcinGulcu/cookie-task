@@ -48,3 +48,7 @@ Your script will be assessed on:
 ## Implementation
 
 ToDo: Add your code explanation here
+- acceptAllCookies function creates example cookie and add cookies deleted by observer by creating the script tag again with loadAdCookies function.
+- Cookie blocking script has two options that can be changed manually: optIn, optOut. It looks for the tags which name is SCRIPT, then it takes the src attribute of the node, if src attribute matches with the ad-cookie folder's path and strategy matches with optin, it removes that node and ad-cookies will be removed when the page is loaded. When we select the optOut strategy, it will not remove the node and ad-cookies will be added to the document.cookie, they will be deleted manually by clicking reject button.
+- removeCookies function looks for the ad-cookies and if it finds, it will delete it (opt out scenerio). When we use opt-in option, by default ad-cookies are removed by observer, function will not find ad-cookie and just accept necessary cookie and close the banner.
+- getCookies is a utility function that is taken from w3school.com
