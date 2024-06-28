@@ -58,6 +58,14 @@
         return value;
       }
 
+      /*
+        this is the logic which is useful for future usage of the banner, it prevents the banner from showing up again and again when navigating the page. 
+
+        if (!getCookies(cookieName)) {
+          cookieContainer.classList.remove("hidden");
+        } 
+      */
+
       function loadAdScripts() {
         const script = document.createElement("script");
         script.src = "cookie-scripts/advertising-cookie.js";
@@ -67,14 +75,6 @@
 
       function acceptAllCookies() {
         const cookieName = "exCookie";
-
-        /*
-        this is the logic which is useful for future usage of the banner, it prevents the banner from showing up again and again when navigating the page. 
-
-        if (!getCookies(cookieName)) {
-          cookieContainer.classList.remove("hidden");
-        } 
-        */
         document.cookie =
           cookieName +
           "=true; expires=" +
