@@ -3,7 +3,7 @@ const strategies = {
   optOut: 'OPT_OUT',
 }
 
-const currentOpt = strategies.optOut;
+const currentOpt = strategies.optIn;
 
 const config = { childList: true, subtree: true };
 
